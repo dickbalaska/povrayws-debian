@@ -2,5 +2,6 @@ debhelper-build-stamp
 *.log
 *.substvars
 .debhelper
+files
 povrayws
 
