@@ -17,8 +17,9 @@ Build-Depends:
  libopenexr-dev,
  libsdl-dev,
  libxpm-dev,
+ libwebsocketpp-dev,
 Standards-Version: 3.9.6
-Homepage: http://www.buckosoft.com/bsac
+Homepage: http://www.buckosoft.com/povrayws
 
 Package: povrayws
 Architecture: any
