@@ -1,0 +1,40 @@
+Source: povrayws
+Section: graphics
+Priority: extra
+Maintainer: Dick Balaska <dick@buckosoft.com>
+Build-Depends:
+ debhelper (>= 9),
+ automake,
+ libpng-dev,
+ zlib1g-dev,
+ libx11-dev,
+ libxt-dev,
+ libice-dev,
+ libjpeg-dev,
+ libtiff-dev,
+ pkg-config,
+ libboost-thread-dev,
+ libopenexr-dev,
+ libsdl-dev,
+ libxpm-dev,
+Standards-Version: 3.9.6
+Homepage: http://www.buckosoft.com/bsac
+
+Package: povrayws
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: povray-includes
+Description: Persistence of vision raytracer + Websockets (3D renderer)
+ POV-Ray is a full-featured ray tracer. Ray tracers simulate objects
+ and light sources of the real world to calculate photorealistic, computer
+ generated images. Because of the nature of ray tracing, this process is
+ quite CPU-intensive, at the benefit of more realistic images compared to
+ real time rendering techniques. For example, in POV-Ray, you can model a
+ glass prism, and you will see a spectrum in the resulting image.
+ .
+ This edition of POV-Ray replaces the command line with a websockets 
+ interface. povrayws nominally runs as a pseudo-service and other programs
+ connect to it and drive it.
+ .
+ povray-includes is highly recommended in addition to this package.

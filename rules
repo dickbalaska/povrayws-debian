@@ -1,0 +1,50 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+DEB_HOST_ARCH       ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+ifeq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CXXFLAGS += -O3
+	
+	# This is rumoured to give wrong results with zero-thickness boxes, so
+	# disabled
+	# CXXFLAGS += -ffast-math
+		
+	ifeq ($(DEB_HOST_ARCH),i386)
+		 CXXFLAGS += -minline-all-stringops -malign-double
+	endif
+endif
+
+LDFLAGS	+= -Wl,--as-needed
+
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_configure:
+	if [ -d libraries ] && [ ! -d libraries.donotuse ] ; then mv -v libraries libraries.donotuse ; fi
+	cd unix && ./prebuild.sh --ws
+	dh_auto_configure -- \
+		--disable-optimiz \
+		--disable-strip \
+		--with-boost-thread=boost_thread \
+		COMPILED_BY="$(shell dpkg-parsechangelog | sed -n '/^Maintainer/{s/Maintainer: //;s/@debian.org/ at debian dot org/;p}') for Debian <www.debian.org>" \
+		CXXFLAGS="$(CXXFLAGS)" \
+		LDFLAGS="$(LDFLAGS)"
+
+override_dh_auto_clean:
+	dh_auto_clean
+	-cd unix && ./prebuild.sh clean
+	if [ -d libraries.donotuse ] && [ ! -d libraries ] ; then mv -v libraries.donotuse libraries ; fi
+	-test ! -d .git || git checkout libraries
+
+#override_dh_install:
+#	dh_install --list-missing
+
+#override_dh_installchangelogs:
+#	dh_installchangelogs changes.txt
+
+#override_dh_compress:
+#	dh_compress -X usr/share/doc/povray/examples
