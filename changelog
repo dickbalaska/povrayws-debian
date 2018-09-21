@@ -3,6 +3,8 @@ povrayws (3.80.0~xenial4) xenial; urgency=low
   * Update to POV-Ray v3.8.0-alpha.9841009
   * some websockets leak cleanups
 
+ -- Dick Balaska <dick@buckosoft.com>  Wed, 19 Sep 2018 22:36:26 -0400
+
 povrayws (3.80.0~xenial1) xenial; urgency=low
 
   * Initial release
