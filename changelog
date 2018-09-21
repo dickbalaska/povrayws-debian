@@ -1,3 +1,9 @@
+povrayws (3.80.0~xenial5) xenial; urgency=low
+
+  * We need qtpovray-includes
+
+ -- Dick Balaska <dick@buckosoft.com>  Thu, 20 Sep 2018 20:55:12 -0400
+
 povrayws (3.80.0~xenial4) xenial; urgency=low
 
   * Update to POV-Ray v3.8.0-alpha.9841009
