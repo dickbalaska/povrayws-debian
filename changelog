@@ -1,3 +1,9 @@
+povrayws (3.80.0~xenial7) xenial; urgency=low
+
+  * Bug fixes to new argv handling
+
+ -- Dick Balaska <dick@buckosoft.com>  Mon, 01 Oct 2018 06:49:14 -0400
+
 povrayws (3.80.0~xenial6) xenial; urgency=low
 
   * Update to POV-Ray v3.8.0-alpha.9850723
